@@ -28,5 +28,3 @@ function displayPeople(data) {
     list.innerHTML = data.results[i].name;
   }
 }
-
-// displayPeople();
