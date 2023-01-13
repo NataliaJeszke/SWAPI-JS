@@ -1,7 +1,7 @@
 const $search = document.getElementById("search-box");
 const $name = document.getElementById("characterName");
 
-document.getElementById("submit").addEventListener("click", getPeopleValue);
+document.getElementById("submit").addEventListener("click", getPeopleValues);
 
 function getPeopleValues() {
   let searchValue = $search.value;
@@ -28,8 +28,8 @@ function displayPeopleValues(data) {
     const homeworldLink = data.results[i].homeworld;
     getHomeworld(homeworldLink);
 
-    // const moviesLinks = data.results[i].films;
-    // getMovies(moviesLinks);
+    const moviesLinks = data.results[i].films;
+    getMovies(moviesLinks);
   }
 }
 
@@ -44,18 +44,19 @@ function displayHomeworldName(dataHomeworld) {
   homeworldName.innerHTML = dataHomeworld.name;
 }
 
-// async function getMovies(moviesLinks) {
-//   for (let i = 0; i < moviesLinks.length; i++) {
-//     let link = moviesLinks[i];
-//     const res = await fetch(`${link}`);
-//     const dataMovies = await res.json();
-//     displayMovies(dataMovies);
-//   }
-// }
+async function getMovies(moviesLinks) {
+  for (let i = 0; i < moviesLinks.length; i++) {
+    let link = moviesLinks[i];
+    const res = await fetch(`${link}`);
+    const dataMovies = await res.json();
+    displayMovies(dataMovies);
+  }
+}
 
-// function displayMovies(dataMovies) {
-//   const movieTitle = document.getElementById("movies");
-//   movieTitle.innerHTML = dataMovies.title;
-// }
+// Create loop to display all movies with <p></p>//
+function displayMovies(dataMovies) {
+  const movieTitle = document.getElementById("movies");
+  movieTitle.innerHTML = dataMovies.title;
+}
 
 function displaySpecies(data) {}
