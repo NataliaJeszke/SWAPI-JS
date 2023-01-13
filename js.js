@@ -17,17 +17,16 @@ async function loadStarWars(searchValue) {
   const res = await fetch(`${URL}`);
   const data = await res.json();
 
-  displayPeople(data)
+  displayPeople(data);
 
   console.log(data);
 }
 
 function displayPeople(data) {
-    for(let i = 0; i < data.results.length; i++) {
-        const list = document.getElementById("demo")
-        list.innerHTML = data.results[i].name;
-      }
-
+  for (let i = 0; i < data.results.length; i++) {
+    const list = document.getElementById("demo");
+    list.innerHTML = data.results[i].name;
+  }
 }
 
 // displayPeople();
