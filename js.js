@@ -1,7 +1,7 @@
 const search = document.getElementById("search-box").value;
 const result = document.getElementById("result");
 
-const list = document.getElementById("demo");
+const list = document.getElementById("characterName");
 
 document.getElementById("submit").addEventListener("click", getPeopleValue);
 
@@ -24,7 +24,7 @@ async function loadStarWars(searchValue) {
 
 function displayPeople(data) {
   for (let i = 0; i < data.results.length; i++) {
-    const list = document.getElementById("demo");
+    const list = document.getElementById("characterName");
     list.innerHTML = data.results[i].name;
   }
 }
