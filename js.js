@@ -1,8 +1,9 @@
 const $search = document.getElementById("search-box");
 const $name = document.getElementById("characterName");
 
-document.getElementById("submit").addEventListener("click", getPeopleValues);
 document.getElementById("submit").addEventListener("click", clearMovies);
+
+document.getElementById("submit").addEventListener("click", getPeopleValues);
 
 function getPeopleValues() {
   let searchValue = $search.value;
@@ -62,7 +63,7 @@ function displayMovies(dataMovie) {
   const movieTitle = document.getElementById("movies");
 
   const para = document.createElement("p");
-  para.className = "movieTitle";
+  para.classList.add("movieTitle");
   para.innerHTML = `${dataMovie.title}`;
 
   movieTitle.appendChild(para);
@@ -84,9 +85,9 @@ function displaySpecies(dataSpecies) {
   speciesName.innerHTML = dataSpecies.name;
 }
 
-//Add clear function to submit button
-
 function clearMovies() {
-  const para = document.querySelector(".movieTitle");
-  para.remove();
+  let element = document.getElementById("movies");
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
 }
