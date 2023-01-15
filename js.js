@@ -30,6 +30,9 @@ function displayPeopleValues(data) {
 
     const moviesLinks = data.results[i].films;
     getMovies(moviesLinks);
+
+    const speciesLink = data.results[i].species;
+    getSpecies(speciesLink);
   }
 }
 
@@ -63,4 +66,13 @@ function displayMovies(dataMovie) {
   movieTitle.appendChild(para);
 }
 
-function displaySpecies(data) {}
+async function getSpecies(speciesLink) {
+  for (let i = 0; i < speciesLink.length; i++) {
+    let link = speciesLink[i];
+    const res = await fetch(`${link}`);
+    const dataSpecies = await res.json();
+    displaySpecies(dataSpecies);
+  }
+}
+
+function displaySpecies(dataSpecies) {}
