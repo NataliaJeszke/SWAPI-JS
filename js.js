@@ -48,15 +48,19 @@ async function getMovies(moviesLinks) {
   for (let i = 0; i < moviesLinks.length; i++) {
     let link = moviesLinks[i];
     const res = await fetch(`${link}`);
-    const dataMovies = await res.json();
-    displayMovies(dataMovies);
+    const dataMovie = await res.json();
+    displayMovies(dataMovie);
   }
 }
 
-// Create loop to display all movies with <p></p>//
-function displayMovies(dataMovies) {
+function displayMovies(dataMovie) {
   const movieTitle = document.getElementById("movies");
-  movieTitle.innerHTML = dataMovies.title;
+
+  const para = document.createElement("p");
+
+  para.innerHTML = `${dataMovie.title}`;
+
+  movieTitle.appendChild(para);
 }
 
 function displaySpecies(data) {}
