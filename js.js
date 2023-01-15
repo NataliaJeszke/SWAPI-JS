@@ -2,6 +2,7 @@ const $search = document.getElementById("search-box");
 const $name = document.getElementById("characterName");
 
 document.getElementById("submit").addEventListener("click", getPeopleValues);
+document.getElementById("submit").addEventListener("click", clearMovies);
 
 function getPeopleValues() {
   let searchValue = $search.value;
@@ -61,7 +62,7 @@ function displayMovies(dataMovie) {
   const movieTitle = document.getElementById("movies");
 
   const para = document.createElement("p");
-
+  para.className = "movieTitle";
   para.innerHTML = `${dataMovie.title}`;
 
   movieTitle.appendChild(para);
@@ -83,5 +84,9 @@ function displaySpecies(dataSpecies) {
   speciesName.innerHTML = dataSpecies.name;
 }
 
+//Add clear function to submit button
 
-//Add refresh to "submit" button. Send search-box value to localStorage, get value from localStorage after page refresh.
+function clearMovies() {
+  const para = document.querySelector(".movieTitle");
+  para.remove();
+}
