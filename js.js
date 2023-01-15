@@ -33,6 +33,7 @@ function displayPeopleValues(data) {
 
     const speciesLink = data.results[i].species;
     getSpecies(speciesLink);
+    console.log(speciesLink);
   }
 }
 
@@ -72,7 +73,15 @@ async function getSpecies(speciesLink) {
     const res = await fetch(`${link}`);
     const dataSpecies = await res.json();
     displaySpecies(dataSpecies);
+    console.log(dataSpecies);
   }
 }
 
-function displaySpecies(dataSpecies) {}
+function displaySpecies(dataSpecies) {
+  const speciesName = document.getElementById("species");
+
+  speciesName.innerHTML = dataSpecies.name;
+}
+
+
+//Add refresh to "submit" button. Send search-box value to localStorage, get value from localStorage after page refresh.
