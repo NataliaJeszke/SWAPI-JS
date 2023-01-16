@@ -54,8 +54,7 @@ async function getHomeworld(homeworldLink) {
 }
 
 function displayHomeworldName(dataHomeworld) {
-  const homeworldName = document.getElementById("homeworld");
-  homeworldName.innerHTML = dataHomeworld.name;
+  $homeworld.innerHTML = dataHomeworld.name;
 }
 
 async function getMovies(moviesLinks) {
@@ -68,13 +67,11 @@ async function getMovies(moviesLinks) {
 }
 
 function displayMovies(dataMovie) {
-  const movieTitle = document.getElementById("movies");
-
   const para = document.createElement("p");
   para.classList.add("movieTitle");
   para.innerHTML = `${dataMovie.title}`;
 
-  movieTitle.appendChild(para);
+  $movies.appendChild(para);
 }
 
 async function getSpecies(speciesLink) {
@@ -88,9 +85,7 @@ async function getSpecies(speciesLink) {
 }
 
 function displaySpecies(dataSpecies) {
-  const speciesName = document.getElementById("species");
-
-  speciesName.innerHTML = dataSpecies.name;
+  $species.innerHTML = dataSpecies.name;
 }
 
 function clearAllInput() {
