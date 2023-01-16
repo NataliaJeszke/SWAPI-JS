@@ -1,14 +1,19 @@
 const $search = document.getElementById("search-box");
-const $name = document.getElementById("characterName");
+const $characterName = document.getElementById("characterName");
+const $homeworld = document.getElementById("homeworld");
+const $movies = document.getElementById("movies");
+const $species = document.getElementById("species");
 
 document.getElementById("submit").addEventListener("click", clearMovies);
 
-document.getElementById("submit").addEventListener("click", getPeopleValues);
+document.getElementById("submit").addEventListener("click", getSearchValue);
 
-function getPeopleValues() {
+function getSearchValue() {
   let searchValue = $search.value;
   if (searchValue.length > 0) {
     loadStarWars(searchValue);
+  } else {
+    alert("Search field is empty!");
   }
 }
 
@@ -17,15 +22,15 @@ async function loadStarWars(searchValue) {
   const res = await fetch(`${URL}`);
   const data = await res.json();
 
-  displayPeopleValues(data);
+  getPeopleValues(data);
 
   console.log(data);
 }
 
-function displayPeopleValues(data) {
+function getPeopleValues(data) {
   for (let i = 0; i < data.results.length; i++) {
-    const name = document.getElementById("characterName");
-    name.innerHTML = data.results[i].name;
+    const name = data.results[i].name;
+    displayName(name);
 
     const homeworldLink = data.results[i].homeworld;
     getHomeworld(homeworldLink);
@@ -35,8 +40,11 @@ function displayPeopleValues(data) {
 
     const speciesLink = data.results[i].species;
     getSpecies(speciesLink);
-    console.log(speciesLink);
   }
+}
+
+function displayName(name) {
+  $characterName.innerHTML = name;
 }
 
 async function getHomeworld(homeworldLink) {
@@ -90,6 +98,9 @@ function clearMovies() {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
+  $characterName.innerHTML = "";
+  $homeworld.innerHTML = "";
+  $species.innerHTML = "";
 }
 
 //add clear All for all paragraphs
