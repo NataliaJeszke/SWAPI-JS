@@ -89,9 +89,8 @@ function displaySpecies(dataSpecies) {
 }
 
 function clearAllInput() {
-  let element = document.getElementById("movies");
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
+  while ($movies.firstChild) {
+    $movies.removeChild($movies.firstChild);
   }
   $characterName.innerHTML = "";
   $homeworld.innerHTML = "";
