@@ -25,6 +25,10 @@ async function loadStarWars(searchValue) {
   getPeopleValues(data);
 
   console.log(data);
+
+  if (data.count === 0) {
+    alert("there is no such character");
+  }
 }
 
 function getPeopleValues(data) {
