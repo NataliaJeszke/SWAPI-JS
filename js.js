@@ -101,4 +101,3 @@ function clearAllInput() {
   $species.innerHTML = "";
 }
 
-//handle the response of the api whene there is no such searched value
