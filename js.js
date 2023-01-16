@@ -97,4 +97,4 @@ function clearAllInput() {
   $species.innerHTML = "";
 }
 
-//add clear All for all paragraphs
+//handle the response of the api whene there is no such searched value
