@@ -4,7 +4,7 @@ const $homeworld = document.getElementById("homeworld");
 const $movies = document.getElementById("movies");
 const $species = document.getElementById("species");
 
-document.getElementById("submit").addEventListener("click", clearMovies);
+document.getElementById("submit").addEventListener("click", clearAllInput);
 
 document.getElementById("submit").addEventListener("click", getSearchValue);
 
@@ -93,7 +93,7 @@ function displaySpecies(dataSpecies) {
   speciesName.innerHTML = dataSpecies.name;
 }
 
-function clearMovies() {
+function clearAllInput() {
   let element = document.getElementById("movies");
   while (element.firstChild) {
     element.removeChild(element.firstChild);
