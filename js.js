@@ -91,3 +91,5 @@ function clearMovies() {
     element.removeChild(element.firstChild);
   }
 }
+
+//add clear All for all paragraphs
