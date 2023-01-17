@@ -4,6 +4,8 @@ const $homeworld = document.getElementById("homeworld");
 const $movies = document.getElementById("movies");
 const $species = document.getElementById("species");
 
+const $moreThanOneCharacter = document.getElementById("resultsForMoreThanOneCharacter");
+
 document.getElementById("submit").addEventListener("click", clearAllInput);
 
 document.getElementById("submit").addEventListener("click", getSearchValue);
@@ -28,6 +30,10 @@ async function loadStarWars(searchValue) {
 
   if (data.count === 0) {
     alert("there is no such character");
+  }
+
+  if(data.count>=2){
+    function displayMoreThanOneCharacter();
   }
 }
 
