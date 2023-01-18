@@ -4,7 +4,9 @@ const $homeworld = document.getElementById("homeworld");
 const $movies = document.getElementById("movies");
 const $species = document.getElementById("species");
 
-const $moreThanOneCharacter = document.getElementById("resultsForMoreThanOneCharacter");
+const $moreThanOneCharacter = document.getElementById(
+  "resultsForMoreThanOneCharacter"
+);
 
 document.getElementById("submit").addEventListener("click", clearAllInput);
 
@@ -32,15 +34,19 @@ async function loadStarWars(searchValue) {
     alert("there is no such character");
   }
 
-  if(data.count>=2){
-    function displayMoreThanOneCharacter();
-  }
+  // if(data.count>=2){
+  //   function displayMoreThanOneCharacter();
+  // }
 }
 
 function getPeopleValues(data) {
+  const multipleNames = [];
   for (let i = 0; i < data.results.length; i++) {
     const name = data.results[i].name;
     displayName(name);
+    console.log(`names ${name}`);
+
+    multipleNames.push(`${name}`)
 
     const homeworldLink = data.results[i].homeworld;
     getHomeworld(homeworldLink);
@@ -51,6 +57,16 @@ function getPeopleValues(data) {
     const speciesLink = data.results[i].species;
     getSpecies(speciesLink);
   }
+  console.log(`array of names ${multipleNames}`);
+  generateNameList(multipleNames);
+}
+
+function generateNameList(multipleNames){
+  let names="";
+  for(let i = 0; i<multipleNames.length; i++){
+    names+=`<li>${multipleNames[i]}</li>`
+  }
+  document.getElementById("characterName").innerHTML=`${names}`
 }
 
 function displayName(name) {
@@ -106,4 +122,3 @@ function clearAllInput() {
   $homeworld.innerHTML = "";
   $species.innerHTML = "";
 }
-
