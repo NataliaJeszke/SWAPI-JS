@@ -38,7 +38,6 @@ async function loadStarWars(searchValue) {
 function getPeopleValues(data) {
   const multipleNames = [];
   const multipleHomeworlds = [];
-  const multipleMovies = [];
   for (let i = 0; i < data.results.length; i++) {
     const name = data.results[i].name;
     console.log(`names ${name}`);
@@ -51,10 +50,10 @@ function getPeopleValues(data) {
 
     multipleHomeworlds.push(`${homeworldLink}`);
 
-    const moviesLinks = data.results[i].films;
-    getMovies(moviesLinks);
+    // const moviesLinks = data.results[i].films;
+    // getMovies(moviesLinks);
 
-    multipleMovies.push(`${moviesLinks}`);
+    // multipleMovies.push(`${moviesLinks}`);
 
     const speciesLink = data.results[i].species;
     getSpecies(speciesLink);
@@ -89,19 +88,19 @@ function displayHomeworldName(dataHomeworld) {
   createDivHomeworld(nameOfHomeworld);
 }
 
-async function getMovies(multipleMovies) {
-  for (let i = 0; i < multipleMovies.length; i++) {
-    let link = multipleMovies[i];
-    const res = await fetch(`${link}`);
-    const dataMovie = await res.json();
-    displayMovies(dataMovie);
-  }
-}
+// async function getMovies(multipleMovies) {
+//   for (let i = 0; i < multipleMovies.length; i++) {
+//     let link = multipleMovies[i];
+//     const res = await fetch(`${link}`);
+//     const dataMovie = await res.json();
+//     displayMovies(dataMovie);
+//   }
+// }
 
-function displayMovies(dataMovie) {
-  let nameOfMovie = `${dataMovie.title}`;
-  createDivMovies(nameOfMovie);
-}
+// function displayMovies(dataMovie) {
+//   let nameOfMovie = `${dataMovie.title}`;
+//   createDivMovies(nameOfMovie);
+// }
 
 async function getSpecies(speciesLink) {
   for (let i = 0; i < speciesLink.length; i++) {
@@ -158,17 +157,17 @@ function createDivHomeworld(nameOfHomeworld) {
 
   document.getElementsByName("p").innerHTML = `${nameOfHomeworld}`;
 }
-function createDivMovies(nameOfMovie) {
-  const newDiv = document.createElement("div");
-  const newH3 = document.createElement("h3");
-  const newP = document.createElement("p");
-  newH3.innerText = "Movies";
-  newP.classList = "moviesClass";
-  newP.innerText = `${nameOfMovie}`;
-  newDiv.appendChild(newH3);
-  newDiv.appendChild(newP);
-  const movieDiv = document.getElementById("multipleHomeworld");
-  movieDiv.appendChild(newDiv);
+// function createDivMovies(nameOfMovie) {
+//   const newDiv = document.createElement("div");
+//   const newH3 = document.createElement("h3");
+//   const newP = document.createElement("p");
+//   newH3.innerText = "Movies";
+//   newP.classList = "moviesClass";
+//   newP.innerText = `${nameOfMovie}`;
+//   newDiv.appendChild(newH3);
+//   newDiv.appendChild(newP);
+//   const movieDiv = document.getElementById("multipleHomeworld");
+//   movieDiv.appendChild(newDiv);
 
-  document.getElementsByName("p").innerHTML = `${nameOfMovie}`;
-}
+//   document.getElementsByName("p").innerHTML = `${nameOfMovie}`;
+// }
