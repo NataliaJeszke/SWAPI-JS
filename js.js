@@ -26,27 +26,23 @@ async function loadStarWars(searchValue) {
   const res = await fetch(`${URL}`);
   const data = await res.json();
 
-  getPeopleValues(data);
-
   console.log(data);
 
   if (data.count === 0) {
     alert("there is no such character");
+  } else if (data.count > 0) {
+    getPeopleValues(data);
   }
-
-  // if(data.count>=2){
-  //   function displayMoreThanOneCharacter();
-  // }
 }
 
 function getPeopleValues(data) {
   const multipleNames = [];
   for (let i = 0; i < data.results.length; i++) {
     const name = data.results[i].name;
-    displayName(name);
+    // displayName(name);
     console.log(`names ${name}`);
 
-    multipleNames.push(`${name}`)
+    multipleNames.push(`${name}`);
 
     const homeworldLink = data.results[i].homeworld;
     getHomeworld(homeworldLink);
@@ -61,17 +57,17 @@ function getPeopleValues(data) {
   generateNameList(multipleNames);
 }
 
-function generateNameList(multipleNames){
-  let names="";
-  for(let i = 0; i<multipleNames.length; i++){
-    names+=`<li>${multipleNames[i]}</li>`
+function generateNameList(multipleNames) {
+  let names = "";
+  for (let i = 0; i < multipleNames.length; i++) {
+    names += `<li>${multipleNames[i]}</li>`;
   }
-  document.getElementById("characterName").innerHTML=`${names}`
+  document.getElementById("characterName").innerHTML = `${names}`;
 }
 
-function displayName(name) {
-  $characterName.innerHTML = name;
-}
+// function displayName(name) {
+//   $characterName.innerHTML = name;
+// }
 
 async function getHomeworld(homeworldLink) {
   const res = await fetch(`${homeworldLink}`);
@@ -122,3 +118,16 @@ function clearAllInput() {
   $homeworld.innerHTML = "";
   $species.innerHTML = "";
 }
+
+//Utworzyć divy z "name", "homeworld", "species" zależnie od liczby w elemencie "count" API.
+//Przypisać do każdego diva values z properties (name, homeworld, species, movies).
+
+function createDiv() {
+  const newDiv = document.createElement("div");
+  const newH3 = document.createElement("h3");
+  newH3.innerText = "Name2";
+  newDiv.appendChild(newH3);
+  const namesDiv = document.getElementById("multipleNames");
+  namesDiv.appendChild(newDiv);
+}
+createDiv();
