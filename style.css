@@ -3,3 +3,8 @@
     flex-direction: row;
     gap: 20px;
 }
+
+#multipleHomeworld{
+    display: flex;
+    gap: 30px;
+}

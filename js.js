@@ -37,15 +37,18 @@ async function loadStarWars(searchValue) {
 
 function getPeopleValues(data) {
   const multipleNames = [];
+  const multipleHomeworlds = [];
   for (let i = 0; i < data.results.length; i++) {
     const name = data.results[i].name;
-    // displayName(name);
     console.log(`names ${name}`);
 
     multipleNames.push(`${name}`);
 
     const homeworldLink = data.results[i].homeworld;
     getHomeworld(homeworldLink);
+    console.log(homeworldLink);
+
+    multipleHomeworlds.push(`${homeworldLink}`);
 
     const moviesLinks = data.results[i].films;
     getMovies(moviesLinks);
@@ -55,28 +58,33 @@ function getPeopleValues(data) {
   }
   console.log(`array of names ${multipleNames}`);
   generateNameList(multipleNames);
+  console.log(`multiple homeworlds ${multipleHomeworlds}`);
 }
 
 function generateNameList(multipleNames) {
-  let names = "";
   for (let i = 0; i < multipleNames.length; i++) {
-    names += `<li>${multipleNames[i]}</li>`;
+    let names = `${multipleNames[i]}`;
+    createDivName(names);
   }
-  document.getElementById("characterName").innerHTML = `${names}`;
 }
 
-// function displayName(name) {
-//   $characterName.innerHTML = name;
-// }
+function generateHomeworld(multipleHomeworlds){
+  for (i=0; i<multipleHomeworlds.length; i++){
+    let homeworldsLinks= multipleHomeworlds[i];
+    getHomeworld(homeworldsLinks);
+  }
+}
 
-async function getHomeworld(homeworldLink) {
-  const res = await fetch(`${homeworldLink}`);
+async function getHomeworld(homeworldsLinks) {
+  const res = await fetch(`${homeworldsLinks}`);
   const dataHomeworld = await res.json();
   displayHomeworldName(dataHomeworld);
 }
 
 function displayHomeworldName(dataHomeworld) {
-  $homeworld.innerHTML = dataHomeworld.name;
+  let nameOfHomeworld = dataHomeworld.name;
+  createDivHomeworld(nameOfHomeworld)
+
 }
 
 async function getMovies(moviesLinks) {
@@ -122,12 +130,32 @@ function clearAllInput() {
 //Utworzyć divy z "name", "homeworld", "species" zależnie od liczby w elemencie "count" API.
 //Przypisać do każdego diva values z properties (name, homeworld, species, movies).
 
-function createDiv() {
+function createDivName(names) {
   const newDiv = document.createElement("div");
   const newH3 = document.createElement("h3");
+  const newP = document.createElement("p");
   newH3.innerText = "Name2";
+  newP.classList = "namesClass";
+  newP.innerText = `${names}`;
   newDiv.appendChild(newH3);
+  newDiv.appendChild(newP);
   const namesDiv = document.getElementById("multipleNames");
   namesDiv.appendChild(newDiv);
+
+  document.getElementsByName("p").innerHTML = `${names}`;
 }
-createDiv();
+
+function createDivHomeworld(nameOfHomeworld) {
+  const newDiv = document.createElement("div");
+  const newH3 = document.createElement("h3");
+  const newP = document.createElement("p");
+  newH3.innerText = "Homeworld";
+  newP.classList = "homeworldClass";
+  newP.innerText = `${nameOfHomeworld}`;
+  newDiv.appendChild(newH3);
+  newDiv.appendChild(newP);
+  const homeworldDiv = document.getElementById("multipleHomeworld");
+  homeworldDiv.appendChild(newDiv);
+
+  document.getElementsByName("p").innerHTML = `${nameOfHomeworld}`;
+}
