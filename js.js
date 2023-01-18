@@ -38,6 +38,7 @@ async function loadStarWars(searchValue) {
 function getPeopleValues(data) {
   const multipleNames = [];
   const multipleHomeworlds = [];
+  const multipleMovies = [];
   for (let i = 0; i < data.results.length; i++) {
     const name = data.results[i].name;
     console.log(`names ${name}`);
@@ -52,6 +53,8 @@ function getPeopleValues(data) {
 
     const moviesLinks = data.results[i].films;
     getMovies(moviesLinks);
+
+    multipleMovies.push(`${moviesLinks}`);
 
     const speciesLink = data.results[i].species;
     getSpecies(speciesLink);
@@ -68,9 +71,9 @@ function generateNameList(multipleNames) {
   }
 }
 
-function generateHomeworld(multipleHomeworlds){
-  for (i=0; i<multipleHomeworlds.length; i++){
-    let homeworldsLinks= multipleHomeworlds[i];
+function generateHomeworld(multipleHomeworlds) {
+  for (i = 0; i < multipleHomeworlds.length; i++) {
+    let homeworldsLinks = multipleHomeworlds[i];
     getHomeworld(homeworldsLinks);
   }
 }
@@ -83,13 +86,12 @@ async function getHomeworld(homeworldsLinks) {
 
 function displayHomeworldName(dataHomeworld) {
   let nameOfHomeworld = dataHomeworld.name;
-  createDivHomeworld(nameOfHomeworld)
-
+  createDivHomeworld(nameOfHomeworld);
 }
 
-async function getMovies(moviesLinks) {
-  for (let i = 0; i < moviesLinks.length; i++) {
-    let link = moviesLinks[i];
+async function getMovies(multipleMovies) {
+  for (let i = 0; i < multipleMovies.length; i++) {
+    let link = multipleMovies[i];
     const res = await fetch(`${link}`);
     const dataMovie = await res.json();
     displayMovies(dataMovie);
@@ -97,11 +99,8 @@ async function getMovies(moviesLinks) {
 }
 
 function displayMovies(dataMovie) {
-  const para = document.createElement("p");
-  para.classList.add("movieTitle");
-  para.innerHTML = `${dataMovie.title}`;
-
-  $movies.appendChild(para);
+  let nameOfMovie = `${dataMovie.title}`;
+  createDivMovies(nameOfMovie);
 }
 
 async function getSpecies(speciesLink) {
@@ -158,4 +157,18 @@ function createDivHomeworld(nameOfHomeworld) {
   homeworldDiv.appendChild(newDiv);
 
   document.getElementsByName("p").innerHTML = `${nameOfHomeworld}`;
+}
+function createDivMovies(nameOfMovie) {
+  const newDiv = document.createElement("div");
+  const newH3 = document.createElement("h3");
+  const newP = document.createElement("p");
+  newH3.innerText = "Movies";
+  newP.classList = "moviesClass";
+  newP.innerText = `${nameOfMovie}`;
+  newDiv.appendChild(newH3);
+  newDiv.appendChild(newP);
+  const movieDiv = document.getElementById("multipleHomeworld");
+  movieDiv.appendChild(newDiv);
+
+  document.getElementsByName("p").innerHTML = `${nameOfMovie}`;
 }
