@@ -33,25 +33,27 @@ async function loadStarWars(searchValue) {
   }
 }
 
-function displayPeopleValues(data) {
+async function displayPeopleValues(data) {
   for (let i = 0; i < data.results.length; i++) {
     const character = data.results[i];
     console.log(`ludki ${character}`);
 
-    const characterDiv = createDivCharacter(character);
+    const characterDiv = await createDivCharacter(character);
     $resultsDiv.appendChild(characterDiv);
   }
 }
 
-function createDivCharacter(character) {
-  const name = character.name;
+async function createDivCharacter(character) {
   const characterDiv = document.createElement("div");
+  characterDiv.classList = "characterDiv";
 
+  const name = character.name;
   const nameDiv = createDivName(name);
   characterDiv.appendChild(nameDiv);
 
-
-
+  const moviesLinks = character.films;
+  const moviesDiv = await createDivMovies(moviesLinks);
+  characterDiv.appendChild(moviesDiv);
 
   return characterDiv;
 }
@@ -68,26 +70,38 @@ function createDivName(name) {
 
   return nameDiv;
 }
-function createDivMovies(movies) {
-  const nameDiv = document.createElement("div");
+async function createDivMovies(moviesLinks) {
+  const moviesDiv = document.createElement("div");
   const newH3 = document.createElement("h3");
-  const newP = document.createElement("p");
-  newH3.innerText = "Name";
-  newP.classList = "names";
-  newP.innerText = `${name}`;
-  nameDiv.appendChild(newH3);
-  nameDiv.appendChild(newP);
+  newH3.innerText = "Movies";
+  moviesDiv.appendChild(newH3);
 
-  return nameDiv;
+  for (i = 0; i < moviesLinks.length; i++) {
+    let link = moviesLinks[i];
+    const res = await fetch(`${link}`);
+    const dataMovie = await res.json();
+
+    const newP = document.createElement("p");
+    newP.classList = "movies";
+    newP.innerText = `${dataMovie.title}`;
+    moviesDiv.appendChild(newP);
+  }
+  return moviesDiv;
+}
+
+function clearAllInput() {
+  while ($resultsDiv.firstChild) {
+    $resultsDiv.removeChild($resultsDiv.firstChild);
+  }
 }
 
 ///////////////////////////////////
 
 // async function getMovies(multipleMovies) {
-//   for (let i = 0; i < multipleMovies.length; i++) {
-//     let link = multipleMovies[i];
-//     const res = await fetch(`${link}`);
-//     const dataMovie = await res.json();
+// for (let i = 0; i < multipleMovies.length; i++) {
+//   let link = multipleMovies[i];
+//   const res = await fetch(`${link}`);
+//   const dataMovie = await res.json();
 //     displayMovies(dataMovie);
 //   }
 // }
@@ -111,14 +125,6 @@ function createDivMovies(movies) {
 //   $species.innerHTML = dataSpecies.name;
 // }
 
-function clearAllInput() {
-  while ($movies.firstChild) {
-    $movies.removeChild($movies.firstChild);
-  }
-  $characterName.innerHTML = "";
-  $homeworld.innerHTML = "";
-  $species.innerHTML = "";
-}
 
 //Utworzyć divy z "name", "homeworld", "species" zależnie od liczby w elemencie "count" API.
 //Przypisać do każdego diva values z properties (name, homeworld, species, movies).
