@@ -6,7 +6,6 @@ const $species = document.getElementById("species");
 
 const $resultsDiv = document.getElementById("result");
 
-
 document.getElementById("submit").addEventListener("click", clearAllInput);
 
 document.getElementById("submit").addEventListener("click", getSearchValue);
@@ -39,35 +38,48 @@ function displayPeopleValues(data) {
     const character = data.results[i];
     console.log(`ludki ${character}`);
 
-   const characterDiv= createDivCharacter(character);
+    const characterDiv = createDivCharacter(character);
     $resultsDiv.appendChild(characterDiv);
   }
 }
 
 function createDivCharacter(character) {
   const name = character.name;
-  const newDiv = document.createElement("div");
+  const characterDiv = document.createElement("div");
+
+  const nameDiv = createDivName(name);
+  characterDiv.appendChild(nameDiv);
+
+
+
+
+  return characterDiv;
+}
+
+function createDivName(name) {
+  const nameDiv = document.createElement("div");
   const newH3 = document.createElement("h3");
   const newP = document.createElement("p");
   newH3.innerText = "Name";
   newP.classList = "names";
   newP.innerText = `${name}`;
-  newDiv.appendChild(newH3);
-  newDiv.appendChild(newP);
+  nameDiv.appendChild(newH3);
+  nameDiv.appendChild(newP);
 
-  return(newDiv);
+  return nameDiv;
 }
+function createDivMovies(movies) {
+  const nameDiv = document.createElement("div");
+  const newH3 = document.createElement("h3");
+  const newP = document.createElement("p");
+  newH3.innerText = "Name";
+  newP.classList = "names";
+  newP.innerText = `${name}`;
+  nameDiv.appendChild(newH3);
+  nameDiv.appendChild(newP);
 
-
-
-
-
-
-
-
-
-
-
+  return nameDiv;
+}
 
 ///////////////////////////////////
 
