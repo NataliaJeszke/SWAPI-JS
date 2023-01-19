@@ -45,6 +45,7 @@ async function displayPeopleValues(data) {
 
 async function createDivCharacter(character) {
   const characterDiv = document.createElement("div");
+  characterDiv.classList = "characterDiv";
 
   const name = character.name;
   const nameDiv = createDivName(name);
@@ -88,6 +89,12 @@ async function createDivMovies(moviesLinks) {
   return moviesDiv;
 }
 
+function clearAllInput() {
+  while ($resultsDiv.firstChild) {
+    $resultsDiv.removeChild($resultsDiv.firstChild);
+  }
+}
+
 ///////////////////////////////////
 
 // async function getMovies(multipleMovies) {
@@ -118,14 +125,6 @@ async function createDivMovies(moviesLinks) {
 //   $species.innerHTML = dataSpecies.name;
 // }
 
-function clearAllInput() {
-  while ($movies.firstChild) {
-    $movies.removeChild($movies.firstChild);
-  }
-  $characterName.innerHTML = "";
-  $homeworld.innerHTML = "";
-  $species.innerHTML = "";
-}
 
 //Utworzyć divy z "name", "homeworld", "species" zależnie od liczby w elemencie "count" API.
 //Przypisać do każdego diva values z properties (name, homeworld, species, movies).
