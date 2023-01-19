@@ -4,9 +4,8 @@ const $homeworld = document.getElementById("homeworld");
 const $movies = document.getElementById("movies");
 const $species = document.getElementById("species");
 
-const $moreThanOneCharacter = document.getElementById(
-  "resultsForMoreThanOneCharacter"
-);
+const $resultsDiv = document.getElementById("result");
+
 
 document.getElementById("submit").addEventListener("click", clearAllInput);
 
@@ -31,20 +30,21 @@ async function loadStarWars(searchValue) {
   if (data.count === 0) {
     alert("there is no such character");
   } else if (data.count > 0) {
-    getPeopleValues(data);
+    displayPeopleValues(data);
   }
 }
 
-function getPeopleValues(data) {
+function displayPeopleValues(data) {
   for (let i = 0; i < data.results.length; i++) {
     const character = data.results[i];
     console.log(`ludki ${character}`);
 
-    createDivName(character);
+   const characterDiv= createDivCharacter(character);
+    $resultsDiv.appendChild(characterDiv);
   }
 }
 
-function createDivName(character) {
+function createDivCharacter(character) {
   const name = character.name;
   const newDiv = document.createElement("div");
   const newH3 = document.createElement("h3");
@@ -54,10 +54,8 @@ function createDivName(character) {
   newP.innerText = `${name}`;
   newDiv.appendChild(newH3);
   newDiv.appendChild(newP);
-  const namesDiv = document.getElementById("result");
-  namesDiv.appendChild(newDiv);
 
-  document.getElementsByName("p").innerHTML = `${name}`;
+  return(newDiv);
 }
 
 
