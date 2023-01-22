@@ -6,22 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="js.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap"
+      rel="stylesheet"
+    />
     <title>SWAPI</title>
   </head>
   <body>
-    <header>Get SWAPI</header>
+    <header class="header">
+      <img src="/death-star.png" alt="SWAPI Logo" class="logo">
+      <a href="https://swapi.dev/" class="swapiLink">Get SWAPI</a>
+    </header>
     <div class="search-container">
+      <div class="bannerText">
+        <h1>Star Wars Api</h1>
+        <h3 class="text">
+          The Star Wars API is the world's first quantified and
+          programmatically-formatted set of Star Wars data
+        </h3>
+      </div>
       <div class="search" id="search-list">
-        <h3 class="text-header">Search for Star Wars character</h3>
         <input
           type="text"
           class="form"
-          placeholder="Look up for a Star Wars character..."
+          placeholder="search name"
           id="search-box"
         />
-        <button id="submit" type="submit" value="Submit">Search</button>
+        <button id="submit" type="submit" value="Submit">
+          <img src="/search.png" alt="button" />
+        </button>
       </div>
     </div>
     <div class="result-container" id="result"></div>
+    <!-- https://icons8.com/icons/set/search -->
+    <!-- https://www.dafontfree.io/star-wars-font/ -->
+    <!-- https://www.flaticon.com/free-icon/death-star_290831 -->
   </body>
 </html>
