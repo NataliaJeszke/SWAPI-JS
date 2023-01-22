@@ -36,8 +36,6 @@ async function loadStarWars(searchValue) {
 async function displayPeopleValues(data) {
   for (let i = 0; i < data.results.length; i++) {
     const character = data.results[i];
-    console.log(`ludki ${character}`);
-
     const characterDiv = await createDivCharacter(character);
     $resultsDiv.appendChild(characterDiv);
   }
@@ -55,6 +53,12 @@ async function createDivCharacter(character) {
   const moviesDiv = await createDivMovies(moviesLinks);
   characterDiv.appendChild(moviesDiv);
 
+  const homeworldLink = character.homeworld;
+  const homeworldDiv = await createDivHomeworld(homeworldLink);
+  characterDiv.appendChild(homeworldDiv);
+
+  console.log(homeworldLink);
+
   return characterDiv;
 }
 
@@ -70,6 +74,7 @@ function createDivName(name) {
 
   return nameDiv;
 }
+
 async function createDivMovies(moviesLinks) {
   const moviesDiv = document.createElement("div");
   const newH3 = document.createElement("h3");
@@ -87,6 +92,24 @@ async function createDivMovies(moviesLinks) {
     moviesDiv.appendChild(newP);
   }
   return moviesDiv;
+}
+
+async function createDivHomeworld(homeworldLink) {
+  const homeworldDiv = document.createElement("div");
+  const newH3 = document.createElement("h3");
+  newH3.innerText = "Homeworld";
+  homeworldDiv.appendChild(newH3);
+
+  let link = homeworldLink;
+  const res = await fetch(`${link}`);
+  const dataHomeworld = await res.json();
+
+  const newP = document.createElement("p");
+  newP.classList = "homeworld";
+  newP.innerText = `${dataHomeworld.name}`;
+  homeworldDiv.appendChild(newP);
+
+  return homeworldDiv;
 }
 
 function clearAllInput() {
@@ -124,7 +147,6 @@ function clearAllInput() {
 // function displaySpecies(dataSpecies) {
 //   $species.innerHTML = dataSpecies.name;
 // }
-
 
 //Utworzyć divy z "name", "homeworld", "species" zależnie od liczby w elemencie "count" API.
 //Przypisać do każdego diva values z properties (name, homeworld, species, movies).
