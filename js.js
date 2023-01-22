@@ -69,6 +69,7 @@ function createDivName(name) {
   const nameDiv = document.createElement("div");
   const newH3 = document.createElement("h3");
   const newP = document.createElement("p");
+  nameDiv.classList = "nameDiv";
   newH3.innerText = "Name";
   newP.classList = "names";
   newP.innerText = `${name}`;
@@ -81,6 +82,7 @@ function createDivName(name) {
 async function createDivMovies(moviesLinks) {
   const moviesDiv = document.createElement("div");
   const newH3 = document.createElement("h3");
+  moviesDiv.classList = "moviesDiv";
   newH3.innerText = "Movies";
   moviesDiv.appendChild(newH3);
 
@@ -100,6 +102,7 @@ async function createDivMovies(moviesLinks) {
 async function createDivHomeworld(homeworldLink) {
   const homeworldDiv = document.createElement("div");
   const newH3 = document.createElement("h3");
+  homeworldDiv.classList = "homeworldDiv";
   newH3.innerText = "Homeworld";
   homeworldDiv.appendChild(newH3);
 
@@ -118,6 +121,7 @@ async function createDivHomeworld(homeworldLink) {
 async function createDivSpecies(speciesLink) {
   const speciesDiv = document.createElement("div");
   const newH3 = document.createElement("h3");
+  speciesDiv.classList = "speciesDiv";
   newH3.innerText = "Species";
   speciesDiv.appendChild(newH3);
 
