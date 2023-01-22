@@ -9,10 +9,31 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
+    justify-content: center;
+    text-align: center;
+    gap:50px;
+    margin-bottom: 20px;
     -webkit-box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
 -moz-box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
 box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
+    width: 100vw;
+}
+
+.nameDiv{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    padding: 50px;
+}
+
+.speciesDiv{
+    margin-right: 20px;
+}
+
+.characterDiv:hover{
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(144, 144, 144, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(144, 144, 144, 1);
+    box-shadow: 8px 8px 24px 0px rgba(144, 144, 144, 1);
 }
