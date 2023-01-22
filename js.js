@@ -15,6 +15,7 @@ function getSearchValue() {
   if (searchValue.length > 0) {
     loadStarWars(searchValue);
   } else {
+    $search.classList = "errorSearchBox";
     alert("Search field is empty!");
   }
 }
@@ -144,6 +145,7 @@ function clearAllInput() {
   while ($resultsDiv.firstChild) {
     $resultsDiv.removeChild($resultsDiv.firstChild);
   }
+  $search.classList.remove("errorSearchBox");
 }
 
 ///SWAPI///
