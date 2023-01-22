@@ -57,7 +57,9 @@ async function createDivCharacter(character) {
   const homeworldDiv = await createDivHomeworld(homeworldLink);
   characterDiv.appendChild(homeworldDiv);
 
-  console.log(homeworldLink);
+  const speciesLink = character.species;
+  const speciesDiv = await createDivSpecies(speciesLink);
+  characterDiv.appendChild(speciesDiv);
 
   return characterDiv;
 }
@@ -110,6 +112,32 @@ async function createDivHomeworld(homeworldLink) {
   homeworldDiv.appendChild(newP);
 
   return homeworldDiv;
+}
+
+async function createDivSpecies(speciesLink) {
+  const speciesDiv = document.createElement("div");
+  const newH3 = document.createElement("h3");
+  newH3.innerText = "Species";
+  speciesDiv.appendChild(newH3);
+
+  for (i = 0; i < speciesLink.length; i++) {
+    let link = speciesLink[i];
+    const res = await fetch(`${link}`);
+    const dataSpecies = await res.json();
+
+    const newP = document.createElement("p");
+    newP.classList = "species";
+    newP.innerText = `${dataSpecies.name}`;
+    speciesDiv.appendChild(newP);
+  }
+
+  if (speciesLink.length === 0) {
+    const newP = document.createElement("p");
+    newP.classList = "species";
+    newP.innerText = "unknown";
+    speciesDiv.appendChild(newP);
+  }
+  return speciesDiv;
 }
 
 function clearAllInput() {
