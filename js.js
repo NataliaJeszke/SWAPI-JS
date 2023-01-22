@@ -145,3 +145,5 @@ function clearAllInput() {
     $resultsDiv.removeChild($resultsDiv.firstChild);
   }
 }
+
+///SWAPI///
