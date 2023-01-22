@@ -3,7 +3,9 @@
     outline: none;
     background-color: rgb(240, 185, 185);
 }
-
+.result-container{
+    margin-bottom: 50px;
+}
 .characterDiv{
     display: flex;
     flex-direction: row;
@@ -13,10 +15,14 @@
     text-align: center;
     gap:50px;
     margin-bottom: 20px;
-    -webkit-box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
--moz-box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
-box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
-    width: 100vw;
+    margin-left: 20px;
+    margin-right: 50px;
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(117, 117, 117, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(117, 117, 117, 1);
+    box-shadow: 8px 8px 24px 0px rgba(117, 117, 117, 1);
+    width: 90vw;
+    background-color: rgba(240, 248, 255, 0.651);
+    border-radius: 20px 20px 20px 20px;
 }
 
 .nameDiv{
@@ -37,3 +43,19 @@ box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
     -moz-box-shadow: 8px 8px 24px 0px rgba(144, 144, 144, 1);
     box-shadow: 8px 8px 24px 0px rgba(144, 144, 144, 1);
 }
+
+
+body{
+    background:linear-gradient(2deg, rgba(250, 250, 250, 0.466) 0%, rgba(33, 33, 33, 0.377)), url("stormtrooper-big.jpg");
+    background-size: cover;
+    /* background-blend-mode: darken; */
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-container{
+    height: 25vh;
+}
+
