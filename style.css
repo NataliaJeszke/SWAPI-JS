@@ -1,10 +1,18 @@
-#multipleNames{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+.errorSearchBox{
+    border: 3px solid rgb(247, 6, 6);
+    outline: none;
+    background-color: rgb(240, 185, 185);
 }
 
-#multipleHomeworld{
+.characterDiv{
     display: flex;
-    gap: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
+-moz-box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
+box-shadow: 8px 8px 24px 0px rgba(231, 231, 233, 1);
 }
