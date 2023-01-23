@@ -1,9 +1,4 @@
 const $search = document.getElementById("search-box");
-const $characterName = document.getElementById("characterName");
-const $homeworld = document.getElementById("homeworld");
-const $movies = document.getElementById("movies");
-const $species = document.getElementById("species");
-
 const $resultsDiv = document.getElementById("result");
 
 document.getElementById("submit").addEventListener("click", clearAllInput);
@@ -16,6 +11,8 @@ document.addEventListener("keydown", (e) => {
     clearAllInput();
   }
 });
+
+
 function getSearchValue() {
   let searchValue = $search.value;
   if (searchValue.length > 0) {
