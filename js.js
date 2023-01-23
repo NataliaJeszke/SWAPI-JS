@@ -10,6 +10,12 @@ document.getElementById("submit").addEventListener("click", clearAllInput);
 
 document.getElementById("submit").addEventListener("click", getSearchValue);
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    getSearchValue();
+    clearAllInput();
+  }
+});
 function getSearchValue() {
   let searchValue = $search.value;
   if (searchValue.length > 0) {
@@ -151,5 +157,3 @@ function clearAllInput() {
   }
   $search.classList.remove("errorSearchBox");
 }
-
-///SWAPI///
