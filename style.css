@@ -4,11 +4,86 @@
     font-weight: bold;
   }
 
+:root{
+    --bgColorLight: #F3E5F5;
+    --bgColorDiv: #473583;
+    --linkColor: #473583;
+    --visitedColor: #473583;
+    --hoverColor: #7B1FA2;
+    --activeColor: #CE93D8;
+    --bgButton: #a47af1;
+    --fontTextColor: #F3E5F5;
+    --fontPlaceholderColor: #f3e5f5b7;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bgColorLight);
+}
+
+a:link {
+    text-decoration: none;
+    color: var(--linkColor);
+}
+
+a:visited{
+    color: var(--visitedColor);
+}
+
+a:hover{
+    color: var(--hoverColor);
+}
+
+a:active{
+    color: var(--activeColor);
+}
+
+h1{
+    font-family: Starjedi;
+    color: var(--fontTextColor);
+    font-size: 100px;
+}
+
+button img{
+    width: 25px;
+}
+
+button{
+    border: 0;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background-color: var(--bgButton);
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+input{
+    background: transparent;
+    flex: 1;
+    border:0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color: var(--fontTextColor);
+    font-family: 'Fira Sans', sans-serif;
+    margin-left: 50px;
+}
+
 .errorSearchBox{
     border-radius: 60px;
     outline: none;
     background-color: rgba(240, 185, 185, 0.678);
-    color: #F3E5F5;
+    color: var(--fontTextColor);
 }
 
 .characterDiv{
@@ -26,12 +101,18 @@
     -moz-box-shadow: 8px 8px 24px 0px rgba(117, 117, 117, 1);
     box-shadow: 8px 8px 24px 0px rgba(117, 117, 117, 1);
     width: 90vw;
-    background-color:#473583;
+    background-color: var(--bgColorDiv);
     border-radius: 20px 20px 20px 20px;
     font-family: 'Fira Sans', sans-serif;
-    color: #F5F5F5;
+    color: var(--fontTextColor);
     background-image: linear-gradient(90deg, rgba(71, 53, 131, 1) 0%, rgba(41, 25, 72, 1) 100%);
 
+}
+
+.characterDiv:hover{
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(41, 25, 72, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(41, 25, 72, 1);
+    box-shadow: 8px 8px 24px 0px rgba(41, 25, 72, 1);
 }
 
 .nameDiv{
@@ -62,37 +143,17 @@
     margin-bottom: 10px;
 }
 
-.characterDiv:hover{
-    -webkit-box-shadow: 8px 8px 24px 0px rgba(41, 25, 72, 1);
-    -moz-box-shadow: 8px 8px 24px 0px rgba(41, 25, 72, 1);
-    box-shadow: 8px 8px 24px 0px rgba(41, 25, 72, 1);
-}
-
-
-body{
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #F3E5F5;
-}
-
-*{
-    margin: 0;
-    padding: 0;
-}
-
 .search-container{
     height: 50vh;
     width: 100%;
     background:linear-gradient(2deg, hwb(253 0% 68% / 0.856) 0%, rgba(4, 0, 14, 0.815)), url("stormtrooper-big.jpg");
     background-size: cover;
-background-position: center 25%;
-background-repeat: no-repeat;
-display: flex;
-align-items: center;
-flex-direction: column;
-justify-content: center;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .header{
@@ -106,10 +167,6 @@ justify-content: center;
     font-weight: bold;
     
 }
-
-a:link {
-    text-decoration: none;
-  }
 
 .logo{
     margin-left: 50px;
@@ -131,7 +188,7 @@ a:link {
     display: flex;
     text-align: center;
     align-items: center;
-    color: #F5F5F5;
+    color: var(--fontTextColor);
     margin-bottom: 50px;
     flex-direction: column;
     gap: 20px;
@@ -139,16 +196,11 @@ a:link {
 
 }
 
-h1{
-font-family: Starjedi;
-color: #F3E5F5;
-font-size: 100px;
-}
 
 .text{
     font-family: 'Fira Sans', sans-serif;
     font-size: 30px;
-    color: #F3E5F5;
+    color: var(--fontTextColor);
 }
 
 .textSearch{
@@ -178,37 +230,32 @@ font-size: 100px;
 }
 
 ::placeholder{
-    color: #f3e5f5b7;
+    color: var(--fontPlaceholderColor);
     font-family: 'Fira Sans', sans-serif;
 }
 
-button img{
-    width: 25px;
-}
-
-button{
-    border: 0;
-    border-radius: 50px;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    background-color: #a47af1;
-    margin-right: 10px;
-    margin-top: 5px;
-}
-
-input{
-    background: transparent;
-    flex: 1;
-    border:0;
-    outline: none;
-    padding: 24px 20px;
-    font-size: 20px;
-    color: #F5F5F5;
-    font-family: 'Fira Sans', sans-serif;
-    margin-left: 50px;
-}
 
 .result-container{
     margin-top: 30px;
 }
+
+@media (max-width: 816px) {
+    .result-container{
+        margin-top: 180px;
+    }
+
+    .bannerText{
+        text-shadow: -3px -3px 9px rgba(66, 68, 90, 1);
+    }
+    .search{
+        width: 100%;
+        max-width: 700px;
+        background: var(--bgColorDiv);
+        border-radius: 60px;
+        padding: 10px;
+        display: flex;
+        backdrop-filter: blur(4px) saturate(180%);
+    
+    }
+  }
+  
