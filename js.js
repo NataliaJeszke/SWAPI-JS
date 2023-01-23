@@ -157,4 +157,3 @@ function clearAllInput() {
   }
   $search.classList.remove("errorSearchBox");
 }
-
