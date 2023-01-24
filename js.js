@@ -12,7 +12,6 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-
 function getSearchValue() {
   let searchValue = $search.value;
   if (searchValue.length > 0) {
@@ -68,84 +67,76 @@ async function createDivCharacter(character) {
   return characterDiv;
 }
 
-function createDivName(name) {
-  const nameDiv = document.createElement("div");
+function createDOMelements(DOMelement) {
+  const div = document.createElement("div");
   const newH3 = document.createElement("h3");
-  const newP = document.createElement("p");
-  nameDiv.classList = "nameDiv";
-  newH3.innerText = "Name";
-  newP.classList = "names";
-  newP.innerText = `${name}`;
-  nameDiv.appendChild(newH3);
-  nameDiv.appendChild(newP);
+  div.classList = `${DOMelement}`;
+  newH3.innerText = `${DOMelement}`;
+  div.appendChild(newH3);
+  return div;
+}
 
-  return nameDiv;
+function createNewP(innerText, classList) {
+  const newP = document.createElement("p");
+  newP.classList = `${classList}`;
+  newP.innerText = `${innerText}`;
+
+  return newP;
+}
+
+async function getResponse(url) {
+  const res = await fetch(`${url}`);
+  const responseInJSON = res.json();
+  return responseInJSON;
+}
+
+function createDivName(name) {
+  const divName = createDOMelements("Name");
+  const newP = createNewP(name, "names");
+  divName.appendChild(newP);
+
+  return divName;
 }
 
 async function createDivMovies(moviesLinks) {
-  const moviesDiv = document.createElement("div");
-  const newH3 = document.createElement("h3");
-  moviesDiv.classList = "moviesDiv";
-  newH3.innerText = "Movies";
-  moviesDiv.appendChild(newH3);
+  const divMovies = createDOMelements("Movies");
 
   for (let i = 0; i < moviesLinks.length; i++) {
-    let link = moviesLinks[i];
-    const res = await fetch(`${link}`);
-    const dataMovie = await res.json();
+    const dataMovie = await getResponse(moviesLinks[i]);
+    const newP = createNewP(dataMovie.title, "movies");
+    divMovies.appendChild(newP);
 
-    const newP = document.createElement("p");
-    newP.classList = "movies";
-    newP.innerText = `${dataMovie.title}`;
-    moviesDiv.appendChild(newP);
   }
-  return moviesDiv;
+
+  return divMovies;
 }
 
 async function createDivHomeworld(homeworldLink) {
-  const homeworldDiv = document.createElement("div");
-  const newH3 = document.createElement("h3");
-  homeworldDiv.classList = "homeworldDiv";
-  newH3.innerText = "Homeworld";
-  homeworldDiv.appendChild(newH3);
+  const divHomeworld = createDOMelements("Homeworld");
+  const dataHomeworld = await getResponse(homeworldLink);
+  const newP = createNewP(dataHomeworld.name, "homeworld");
+  divHomeworld.appendChild(newP);
 
-  let link = homeworldLink;
-  const res = await fetch(`${link}`);
-  const dataHomeworld = await res.json();
-
-  const newP = document.createElement("p");
-  newP.classList = "homeworld";
-  newP.innerText = `${dataHomeworld.name}`;
-  homeworldDiv.appendChild(newP);
-
-  return homeworldDiv;
+  return divHomeworld;
 }
 
 async function createDivSpecies(speciesLink) {
-  const speciesDiv = document.createElement("div");
-  const newH3 = document.createElement("h3");
-  speciesDiv.classList = "speciesDiv";
-  newH3.innerText = "Species";
-  speciesDiv.appendChild(newH3);
+  const divSpecies = createDOMelements("Species");
 
   for (let i = 0; i < speciesLink.length; i++) {
-    let link = speciesLink[i];
-    const res = await fetch(`${link}`);
-    const dataSpecies = await res.json();
+    const dataSpecies = await getResponse(speciesLink[i]);
+    const newP = createNewP(dataSpecies.name, "species");
 
-    const newP = document.createElement("p");
-    newP.classList = "species";
-    newP.innerText = `${dataSpecies.name}`;
-    speciesDiv.appendChild(newP);
+    divSpecies.appendChild(newP);
+
   }
 
   if (speciesLink.length === 0) {
-    const newP = document.createElement("p");
-    newP.classList = "species";
-    newP.innerText = "unknown";
-    speciesDiv.appendChild(newP);
+    const newP = createNewP("unknown", "species");
+
+    divSpecies.appendChild(newP);
   }
-  return speciesDiv;
+  return divSpecies;
 }
 
 function clearAllInput() {

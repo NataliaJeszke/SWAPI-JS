@@ -115,7 +115,7 @@ input{
     box-shadow: 8px 8px 24px 0px rgba(41, 25, 72, 1);
 }
 
-.nameDiv{
+.Name{
     margin-left: 20px;
     display: flex;
     flex-direction: column;
@@ -124,22 +124,22 @@ input{
     padding: 50px;
 }
 
-.nameDiv h3{
+.Name h3{
     margin-bottom: 10px;
 }
 
-.speciesDiv{
+.Species{
     margin-right: 20px;
 }
 
-.speciesDiv h3{
+.Species h3{
     margin-bottom: 10px;
 }
 
-.moviesDiv h3{
+.Movies h3{
     margin-bottom: 10px;
 }
-.homeworldDiv h3{
+.Homeworld h3{
     margin-bottom: 10px;
 }
 
