@@ -105,6 +105,7 @@ async function createDivMovies(moviesLinks) {
     const dataMovie = await getResponse(moviesLinks[i]);
     const newP = createNewP(dataMovie.title, "movies");
     divMovies.appendChild(newP);
+
   }
 
   return divMovies;
@@ -127,6 +128,7 @@ async function createDivSpecies(speciesLink) {
     const newP = createNewP(dataSpecies.name, "species");
 
     divSpecies.appendChild(newP);
+
   }
 
   if (speciesLink.length === 0) {
