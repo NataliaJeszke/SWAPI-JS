@@ -89,7 +89,7 @@ async function createDivMovies(moviesLinks) {
   newH3.innerText = "Movies";
   moviesDiv.appendChild(newH3);
 
-  for (i = 0; i < moviesLinks.length; i++) {
+  for (let i = 0; i < moviesLinks.length; i++) {
     let link = moviesLinks[i];
     const res = await fetch(`${link}`);
     const dataMovie = await res.json();
@@ -128,7 +128,7 @@ async function createDivSpecies(speciesLink) {
   newH3.innerText = "Species";
   speciesDiv.appendChild(newH3);
 
-  for (i = 0; i < speciesLink.length; i++) {
+  for (let i = 0; i < speciesLink.length; i++) {
     let link = speciesLink[i];
     const res = await fetch(`${link}`);
     const dataSpecies = await res.json();
