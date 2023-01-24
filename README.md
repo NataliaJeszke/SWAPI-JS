@@ -18,5 +18,5 @@ GitHub icon: Fontawesome.com
 Learning how to combine the API with JS and how to pass variables through DOM manipulation. 
 I've come across errors in the API with its elements, such as empty array for "species" element. I created an exception for such cases, assigning the variable 'uknown'.
 
-##Final Look
+## Final Look
 The screenshot of the search page https://drive.google.com/file/d/1tW9ShsgfBf74jyC2VyDC4I8Rxa3Ak5fT/view?usp=share_link
