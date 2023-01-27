@@ -131,7 +131,7 @@ async function createDivSpecies(speciesLink) {
 
   }
 
-  if (speciesLink.length === 0) {
+  if (!speciesLink.length) {
     const newP = createNewP("unknown", "species");
 
     divSpecies.appendChild(newP);
